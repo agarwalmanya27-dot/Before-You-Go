@@ -10,6 +10,6 @@ create table destinations(
     dest_id int auto_increment primary key,
     dest_name varchar(50) not null,
     state varchar(50) not null,
-    vibe enum('Spiritual','Historical','Adventure','Nature','Cultural') not null,
+    vibe enum('Spiritual','Historical','Adventure','Relaxing','Cultural') not null,
     descrip text,
     img_path varchar(255));
