@@ -23,4 +23,4 @@ A web-based travel management and planning system that helps users discover suit
 * Map integration
 * Expansion of destination and travel information
 
-**My recommendation:** Keep it exactly this simple for GitHub. You don't need the Note or Team Members section. It looks cleaner and more like a proper project README.
+
