@@ -1,0 +1,21 @@
+dest_id,dest_name,state,vibe,descrip,img_path
+1,Vrindavan,Uttar Pradesh,Spiritual,"A lively town where every lane feels connected to Krishna,with temples,bhajans,and the feeling of Brij all around.",images/Vrindavan.jpg
+2,Varanasi,Uttar Pradesh,Spiritual,"By the sacred Ganga, ancient streets,evening aartis, and countless stories come together to create a feeling unlike anywhere else.",images/Varanasi.jpg
+3,Ujjain,Madhya Pradesh,Spiritual,"An ancient city where Shipra flows beside sacred temples, and the presence of Mahakal can be felt in its everyday rhythm.",images/Ujjain.jpg
+4,Rameshwaram,Tamil Nadu,Spiritual,"Surrounded by sea and faith,Rameshwaram brings together the quiet beauty of the island and the deep devotion of sacred temples.",images/Rameshwaram.jpg
+5,Hampi ,Karnataka,Historical,"Walk among the ruins of an old kingdom,where huge stones,temples,and quiet landscapes still tell stories of the past.",images/Hampi.jpg
+6,Mahabalipuram,Tamil Nadu,Historical,"A coastal town where ancient temples and stone carvings stand by the sea, showing the stories of another age.",images/Mahabalipuram.jpg
+7,Jaipur,Rajasthan,Historical,"Walk through grand forts, colourful streets and royal palaces that bring the stories of Rajasthan kings to life.",images/Jaipur.jpg
+8,Chhatrapati Sambhajinagar (Aurangabad),Maharashtra,Historical,"A city surrounded by remarkable caves, forts and old monuments, where every stone carries a piece of history.",images/ChhatrapatiSambhajinagar.jpg
+9,Rishikesh,Uttarakhand,Adventure,"From river rafting to mountain trails,Rishikesh brings together fast-paced adventure & the calm beauty of the Ganga.",images/Rishikesh.jpg
+10,Leh,Ladakh,Adventure,"Ride through high mountain roads, explore quiet valleys and discover a landscape that makes every journey feel like an adventure.",images/Leh.jpg
+11,Sohra(Cherrapunji),Meghalaya,Adventure,"Chase waterfall, walk across living root bridges and explore misty hills where every trail brings something new.",images/Sohra.jpg
+12,Andaman,Andaman &,Adventure,"Dive into clear waters ,explore colourful sea life and discover islands where sea becomes part of the adventure.",images/Andaman.jpg
+13,Kashmir,Jammu & Kashmir,Relaxing,"Snowy mountains, peaceful lakes and green valleys come together in Kashmir, creating a landscape that feels calm and refreshing.",images/Kashmir.jpg
+14,Gangtok,Sikkim,Relaxing,"Green hills, mountain views and peaceful streets surround Gangtok,creating a refreshing escape with nature all around.",images/Gangtok.jpg
+15,Coorg,Karnataka,Relaxing,"Green hills, coffee farms and cool weather make Coorg a perfect place to relax close to nature.",images/Coorg.jpg
+16,Munnar,Kerala,Relaxing,Munnar's rolling tea gardens and misty hills create a peaceful view that makes every walk feel refreshing.,images/Munnar.jpg
+17,Kutch,Gujrat,Cultural,"Colourful crafts,folk music and traditional villages make Kutch a beautiful place to experience Gujrat's rich culture.",images/Kutch.jpg
+18,Kolkata,West Bengal,Cultural,"Art,literature,festivals and food give Kolkata a lively culture that can be felt throughout the city.",images/Kolkata.jpg
+19,Puri,Odisha,Cultural,"Ancient traditions, local art and the famous Jagannath  Temple make Puri a special place to experience Odisha's culture.",images/Puri.jpg
+20,Jaisalmer,Rajasthan,Cultural,"Folk music,colourful clothes and desert traditions bring the rich culture of rajasthan to life in Jaisalmer.",images/Jaisalmer.jpg
