@@ -37,7 +37,7 @@ function loginUser() {
     }
       alert("Validation Successful!");
 
-     window.location.href = "index.html";
+     window.location.href = "first.html";
     // -------------------------------
     // JS VALIDATION COMPLETE
     // Now send data to Flask
