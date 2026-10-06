@@ -3,7 +3,7 @@ import mysql.connector
 import os
 from dotenv import load_dotenv
 app = Flask(__name__)
-
+load_dotenv()
 db = mysql.connector.connect(
     host="localhost",
     user=os.getenv("DB_USER"),
