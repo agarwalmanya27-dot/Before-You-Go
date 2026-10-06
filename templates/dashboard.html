@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Before You Go</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#031d43;
+    color:white;
+}
+
+/* TOP BAR */
+
+.top{
+    height:75px;
+    background:#061e43;
+    display:flex;
+    align-items:center;
+    padding:0 55px;
+    gap:20px;
+}
+
+.back{
+    font-size:40px;
+}
+
+.logo{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#09c9ed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.top-title{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.top-title span{
+    color:#08cbed;
+}
+
+.profile{
+    margin-left:auto;
+    font-size:18px;
+    font-weight:bold;
+}
+
+
+/* HERO */
+
+.hero{
+    height:335px;
+    position:relative;
+
+    background-image: url("{{ url_for('static', filename='bd.jpg') }}");
+    background-size:cover;
+    background-position:center;
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,25,60,0.20);
+}
+
+
+/* HERO TEXT */
+
+.hero-content{
+    position:absolute;
+    left:25%;
+    top:65px;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:58px;
+    margin-bottom:8px;
+    text-shadow:0 0 12px white;
+}
+
+.hero-content h1 span{
+    color:#06ccef;
+}
+
+.hero-content h2{
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    font-size:17px;
+    line-height:1.5;
+}
+
+
+/* SIDE TEXT */
+
+.left-text{
+    position:absolute;
+    left:7%;
+    top:65px;
+    z-index:3;
+    font-size:19px;
+    font-style:italic;
+    line-height:1.5;
+}
+
+.right-text{
+    position:absolute;
+    right:7%;
+    top:70px;
+    z-index:3;
+    font-size:20px;
+    font-style:italic;
+    line-height:1.3;
+}
+
+
+/* TOP ARROWS */
+
+.hero-previous{
+    position:absolute;
+    left:25px;
+    top:145px;
+    z-index:5;
+
+    width:50px;
+    height:50px;
+    border-radius:50%;
+
+    background:rgba(5,111,190,0.8);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:38px;
+    box-shadow:0 0 12px #08cbed;
+}
+
+.hero-next{
+    position:absolute;
+    right:25px;
+    top:145px;
+    z-index:5;
+
+    width:50px;
+    height:50px;
+    border-radius:50%;
+
+    background:rgba(5,111,190,0.8);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:38px;
+    box-shadow:0 0 12px #08cbed;
+}
+
+
+/* MAIN */
+
+.main{
+    background:#031f48;
+    padding:28px 55px 45px;
+    min-height:900px;
+}
+
+
+/* CHOOSE VIBE */
+
+.heading{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.sparkle{
+    color:#0bd5f5;
+    font-size:40px;
+}
+
+.heading h2{
+    font-size:34px;
+}
+
+.heading h2 span{
+    color:#09cdef;
+}
+
+.question{
+    margin-left:62px;
+    margin-top:5px;
+    font-size:19px;
+}
+
+
+/* VIBE BUTTONS */
+
+.vibe-buttons{
+    display:flex;
+    gap:18px;
+    margin:28px 35px;
+}
+
+button{
+    height:65px;
+    padding:0 32px;
+
+    border-radius:35px;
+    border:2px solid #155b96;
+
+    background:#062653;
+    color:white;
+
+    font-size:17px;
+    font-weight:bold;
+}
+
+button.selected{
+    background:#087fc8;
+    border-color:#10d6f5;
+    box-shadow:0 0 18px #09ccef;
+}
+
+
+/* DESTINATION BOX */
+
+.destination-box{
+    position:relative;
+
+    background:#062957;
+    border:2px solid #155d96;
+    border-radius:25px;
+
+    padding:25px;
+}
+
+
+/* DESTINATION HEADING */
+
+.destination-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.destination-heading h2{
+    color:#10d2f2;
+    font-size:26px;
+}
+
+.destination-heading p{
+    margin-top:8px;
+    font-size:16px;
+}
+
+.up-arrow{
+    color:#0bd5f5;
+    font-size:38px;
+}
+
+
+/* CARDS */
+
+.cards{
+    display:flex;
+    gap:18px;
+    overflow:hidden;
+}
+
+.card{
+    width:25%;
+    min-width:0;
+
+    background:#073d78;
+
+    border:1px solid #176ba5;
+    border-radius:17px;
+
+    overflow:hidden;
+}
+
+
+/* IMPORTANT IMAGE CODE */
+
+.card img{
+    width:100%;
+    height:175px;
+
+    object-fit:cover;
+    display:block;
+}
+
+
+/* CARD TEXT */
+
+.card-info{
+    padding:12px;
+}
+
+.card-info h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.card-info p{
+    font-size:14px;
+    color:#d7eaff;
+}
+
+
+/* DESTINATION NEXT */
+
+.next-arrow{
+    position:absolute;
+
+    right:-28px;
+    top:210px;
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    background:#087dcc;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:45px;
+
+    box-shadow:0 0 15px #08cbed;
+}
+
+
+/* DOTS */
+
+.dots{
+    text-align:center;
+    margin-top:18px;
+}
+
+.dot{
+    display:inline-block;
+
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#315d88;
+
+    margin:0 6px;
+}
+
+.dot.active{
+    background:#0bd5f5;
+    box-shadow:0 0 10px #0bd5f5;
+}
+
+
+/* FEEDBACK */
+
+.feedback{
+    margin-top:35px;
+
+    background:#062957;
+    border:2px solid #155d96;
+    border-radius:25px;
+
+    padding:28px 35px;
+
+    display:flex;
+    align-items:center;
+
+    min-height:160px;
+}
+
+.feedback-icon{
+    width:105px;
+    height:105px;
+
+    border:2px solid #2aaee2;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:55px;
+
+    margin-right:45px;
+
+    color:#0bd5f5;
+
+    background:rgba(0,100,190,0.25);
+}
+
+.feedback-text h2{
+    font-size:27px;
+    margin-bottom:12px;
+}
+
+.feedback-text p{
+    font-size:18px;
+    line-height:1.5;
+    color:#e0f0ff;
+}
+
+.feedback-arrow{
+    margin-left:auto;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    background:#087dcc;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+
+    box-shadow:0 0 14px #08cbed;
+}
+
+
+/* HISTORY */
+
+.history{
+    margin-top:25px;
+
+    background:#062957;
+    border:2px solid #155d96;
+    border-radius:25px;
+
+    padding:25px 35px;
+
+    display:flex;
+    align-items:center;
+
+    min-height:145px;
+}
+
+.history-icon{
+    width:90px;
+    height:90px;
+
+    border:2px solid #2aaee2;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:48px;
+
+    margin-right:45px;
+
+    color:#0bd5f5;
+
+    background:rgba(0,100,190,0.25);
+}
+
+.history-text h2{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.history-text p{
+    font-size:19px;
+    color:#e0f0ff;
+}
+
+.history-arrow{
+    margin-left:auto;
+
+    font-size:55px;
+    color:#0bd5f5;
+
+    padding-right:10px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- TOP BAR -->
+
+<div class="top">
+
+    <div class="top-title">
+        Before <span>You Go</span>
+    </div>
+
+    <div class="profile">
+        👤 &nbsp; Profile
+    </div>
+
+</div>
+
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="hero-previous">
+        ←
+    </div>
+
+    <div class="hero-next">
+        →
+    </div>
+
+
+    <div class="hero-content">
+
+        <h1>
+            Before You <span>Go</span>
+        </h1>
+
+        <h2>
+            Plan smarter. Travel better.
+        </h2>
+
+        <p>
+            Find your perfect destination based on your vibe,<br>
+            explore hidden gems and make your travel dreams come true.
+        </p>
+
+    </div>
+
+
+    <div class="left-text">
+
+        Not just a trip...<br>
+        it's a story waiting ♡<br><br>
+        ✈
+
+    </div>
+
+
+    <div class="right-text">
+
+        Good<br>
+        Vibes<br>
+        Great<br>
+        Journeys ♡
+
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+
+    <div class="heading">
+
+        <span class="sparkle">✦</span>
+
+        <h2>
+            Choose Your <span>Vibe</span>
+        </h2>
+
+    </div>
+
+
+    <p class="question">
+        What kind of journey are you in the mood for?
+    </p>
+
+
+    <!-- VIBES -->
+
+    <div class="vibe-buttons">
+
+        <button class="selected">
+            ♧ &nbsp; Relaxing
+        </button>
+
+        <button>
+            🛕 &nbsp; Spiritual
+        </button>
+
+        <button>
+            ⛰ &nbsp; Adventure
+        </button>
+
+        <button>
+            🏛 &nbsp; Historical
+        </button>
+
+        <button>
+            🍴 &nbsp; Food & Culture
+        </button>
+
+    </div>
+
+
+    <!-- RELAXING DESTINATIONS -->
+
+    <div class="destination-box">
+
+
+        <div class="destination-heading">
+
+            <div>
+
+                <h2>
+                    ♧ &nbsp; Relaxing Destinations
+                </h2>
+
+                <p>
+                    Slow down. Breathe. Enjoy the calm.
+                </p>
+
+            </div>
+
+            <div class="up-arrow">
+                ︿
+            </div>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <!-- KASHMIR -->
+
+            <div class="card">
+
+                <img src="{{ url_for('static', filename='kashmir.jpg') }}" alt="Kashmir">
+
+                <div class="card-info">
+
+                    <h3>
+                        📍 Kashmir
+                    </h3>
+
+                    <p>
+                        Snowy mountains and peace
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- GANGTOK -->
+
+            <div class="card">
+
+                <img src="{{ url_for('static', filename='gangtok.jpg') }}" alt="Gangtok">
+
+                <div class="card-info">
+
+                    <h3>
+                        📍 Gangtok
+                    </h3>
+
+                    <p>
+                        Green hills and calm
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COORG -->
+
+            <div class="card">
+
+                <img src="{{ url_for('static', filename='coorg.jpg') }}" alt="Coorg">
+
+                <div class="card-info">
+
+                    <h3>
+                        📍 Coorg
+                    </h3>
+
+                    <p>
+                        Green hills and serenity
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MUNNAR -->
+
+            <div class="card">
+
+                <img src="{{ url_for('static', filename='munnar.jpg') }}" alt="Munnar">
+
+                <div class="card-info">
+
+                    <h3>
+                        📍 Munnar
+                    </h3>
+
+                    <p>
+                        Mist, mountains and peace
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="next-arrow">
+            ›
+        </div>
+
+
+        <div class="dots">
+
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- FEEDBACK -->
+
+    <div class="feedback">
+
+        <div class="feedback-icon">
+            💬
+        </div>
+
+        <div class="feedback-text">
+
+            <h2>
+                Your Feedback Matters
+            </h2>
+
+            <p>
+                Help us make your travel journey even better!
+            </p>
+
+        </div>
+
+        <div class="feedback-arrow">
+            ›
+        </div>
+
+    </div>
+
+
+    <!-- HISTORY -->
+
+    <div class="history">
+
+        <div class="history-icon">
+            ◷
+        </div>
+
+        <div class="history-text">
+
+            <h2>
+                Previous History
+            </h2>
+
+            <p>
+                View your past trips
+            </p>
+
+        </div>
+
+        <div class="history-arrow">
+            ›
+        </div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
