@@ -35,37 +35,37 @@ function loginUser() {
         passwordError.innerText = "Password is not written.";
         return;
     }
-      alert("Validation Successful!");
-
-     window.location.href = "first.html";
+    
     // -------------------------------
     // JS VALIDATION COMPLETE
     // Now send data to Flask
-    // -------------------------------
 
-   /* fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name: name,
-            email: email,
-            password: password
-        })
+
+fetch("/login", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+        name: name,
+        email: email,
+        password: password
     })
-    .then(response => response.json())
-    .then(data => {
-
-        if (data.success) {
-            alert("Login Successful!");
-        } else {
-            alert(data.message);
-        }
-
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Unable to connect to Flask.");
-    });*/
+})
+.then(response => {
+    if (response.redirected) {
+        window.location.href = response.url;
+    } else {
+        return response.text();
+    }
+})
+.then(data => {
+    if (data) {
+        alert(data);
+    }
+})
+.catch(error => {
+    console.error("Error:", error);
+    alert("Unable to connect to Flask.");
+});
 }
