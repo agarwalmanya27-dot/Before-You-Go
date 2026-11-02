@@ -13,3 +13,14 @@ create table destinations(
     vibe enum('Spiritual','Historical','Adventure','Relaxing','Cultural') not null,
     descrip text,
     img_path varchar(255));
+CREATE TABLE place (
+    place_id INT AUTO_INCREMENT PRIMARY KEY,
+    dest_id INT,
+    place_name VARCHAR(100),
+    route VARCHAR(5),
+    descrip TEXT,
+    p_image VARCHAR(2048),
+
+    FOREIGN KEY (dest_id)
+    REFERENCES destinations(dest_id)
+);
