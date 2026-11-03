@@ -1,59 +1,46 @@
 from flask import Flask, render_template, request, redirect, url_for
-import mysql.connector
-import os
-from dotenv import load_dotenv
+#import mysql.connector
+
 app = Flask(__name__)
-load_dotenv()
-db = mysql.connector.connect(
-    host="localhost",
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASSWORD"),
-    database="byg"
-)
-print("MYSQL connected successfully!")
+
+#db = mysql.connector.connect(
+#    host="localhost",
+#    user="root",
+#    password="1234",
+#    database="byg"
+#)
+
+#print("MYSQL connected successfully!")
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("login.html")
 
-# Login / Create account
 @app.route("/login", methods=["POST"])
 def login_user():
     name = request.form.get("name")
     email = request.form.get("email")
     password = request.form.get("password")
-    cursor = db.cursor()
 
-    # Check if name + email already exist
-    cursor.execute(
-        "SELECT password FROM users WHERE name = %s AND email = %s",
-        (name, email)
-    )
-    user = cursor.fetchone()
-    
-    # Existing user
-    if user:
-        stored_password = user[0]
+    print("Name:", name)
+    print("Email:", email)
+    print("Password:", password)
 
-        # Check password
-        if password == stored_password:
-            return redirect(url_for("first"))
-        else:
-            return "Incorrect password."
-    # New user
+    if email == "komal@gmail.com" and password == "1234":
+         return redirect(url_for("dashboard"))
     else:
-        cursor.execute(
-            "INSERT INTO users (name, email, password) VALUES (%s, %s, %s)",
-            (name, email, password)
-        )
+        return "Invalid email or password"
 
-        db.commit()
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
-        return redirect(url_for("first"))
-        
-@app.route("/first")
-def first():
-    return render_template("first.html")
+@app.route('/destination/<destination_name>')
+def destination(destination_name):
+    return render_template(
+        'destination.html',
+        destination_name=destination_name
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
