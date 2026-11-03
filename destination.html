@@ -5,11 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BYG | Before You Go</title>
-  <link rel="stylesheet" href="style1.css">
-</head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}"></head>
 <body>
   <header class="navbar">
-    <a class="brand" href="{{ url_for('dashboard') }}" aria-label="BYG home"></a>
+    <a class="brand" href="{{ url_for('dashboard') }}" aria-label="BYG home">
       <span class="brand-mark">❀</span>
       <span><strong>BYG</strong><small>Before You Go</small></span>
     </a>
@@ -89,7 +88,7 @@
     <div class="dialog-body"><span class="dialog-route" id="dialogRoute"></span><h2 id="dialogTitle"></h2><p id="dialogDescription"></p></div>
   </dialog>
   <div class="toast" id="toast" role="status"></div>
-  <script src="data.js"></script>
-  <script src="script1.js"></script>
+  <script src="{{ url_for('static', filename='data.js') }}"></script>
+  <script src="{{ url_for('static', filename='script1.js') }}"></script>
 </body>
 </html>
