@@ -101,7 +101,972 @@
     <div class="dialog-body"><span class="dialog-route" id="dialogRoute"></span><h2 id="dialogTitle"></h2><p id="dialogDescription"></p></div>
   </dialog>
   <div class="toast" id="toast" role="status"></div>
-  <script src="{{ url_for('static', filename='data.js') }}"></script>
+  <script>
+    const destinations = [
+  {
+    "dest_id": 1,
+    "dest_name": "Vrindavan",
+    "state": "Uttar Pradesh",
+    "vibe": "Spiritual",
+    "descrip": "A lively town where every lane feels connected to Krishna,with temples,bhajans,and the feeling of Brij all around.",
+    "img_path": "images/Vrindavan.jpg"
+  },
+  {
+    "dest_id": 2,
+    "dest_name": "Varanasi",
+    "state": "Uttar Pradesh",
+    "vibe": "Spiritual",
+    "descrip": "By the sacred Ganga, ancient streets,evening aartis, and countless stories come together to create a feeling unlike anywhere else.",
+    "img_path": "images/Varanasi.jpg"
+  },
+  {
+    "dest_id": 3,
+    "dest_name": "Ujjain",
+    "state": "Madhya Pradesh",
+    "vibe": "Spiritual",
+    "descrip": "An ancient city where Shipra flows beside sacred temples, and the presence of Mahakal can be felt in its everyday rhythm.",
+    "img_path": "images/Ujjain.jpg"
+  },
+  {
+    "dest_id": 4,
+    "dest_name": "Rameshwaram",
+    "state": "Tamil Nadu",
+    "vibe": "Spiritual",
+    "descrip": "Surrounded by sea and faith,Rameshwaram brings together the quiet beauty of the island and the deep devotion of sacred temples.",
+    "img_path": "images/Rameshwaram.jpg"
+  },
+  {
+    "dest_id": 5,
+    "dest_name": "Hampi",
+    "state": "Karnataka",
+    "vibe": "Historical",
+    "descrip": "Walk among the ruins of an old kingdom,where huge stones,temples,and quiet landscapes still tell stories of the past.",
+    "img_path": "images/Hampi.jpg"
+  },
+  {
+    "dest_id": 6,
+    "dest_name": "Mahabalipuram",
+    "state": "Tamil Nadu",
+    "vibe": "Historical",
+    "descrip": "A coastal town where ancient temples and stone carvings stand by the sea, showing the stories of another age.",
+    "img_path": "images/Mahabalipuram.jpg"
+  },
+  {
+    "dest_id": 7,
+    "dest_name": "Jaipur",
+    "state": "Rajasthan",
+    "vibe": "Historical",
+    "descrip": "Walk through grand forts, colourful streets and royal palaces that bring the stories of Rajasthan kings to life.",
+    "img_path": "images/Jaipur.jpg"
+  },
+  {
+    "dest_id": 8,
+    "dest_name": "Chhatrapati Sambhajinagar (Aurangabad)",
+    "state": "Maharashtra",
+    "vibe": "Historical",
+    "descrip": "A city surrounded by remarkable caves, forts and old monuments, where every stone carries a piece of history.",
+    "img_path": "images/ChhatrapatiSambhajinagar.jpg"
+  },
+  {
+    "dest_id": 9,
+    "dest_name": "Rishikesh",
+    "state": "Uttarakhand",
+    "vibe": "Adventure",
+    "descrip": "From river rafting to mountain trails,Rishikesh brings together fast-paced adventure & the calm beauty of the Ganga.",
+    "img_path": "images/Rishikesh.jpg"
+  },
+  {
+    "dest_id": 10,
+    "dest_name": "Leh",
+    "state": "Ladakh",
+    "vibe": "Adventure",
+    "descrip": "Ride through high mountain roads, explore quiet valleys and discover a landscape that makes every journey feel like an adventure.",
+    "img_path": "images/Leh.jpg"
+  },
+  {
+    "dest_id": 11,
+    "dest_name": "Sohra(Cherrapunji)",
+    "state": "Meghalaya",
+    "vibe": "Adventure",
+    "descrip": "Chase waterfall, walk across living root bridges and explore misty hills where every trail brings something new.",
+    "img_path": "images/Sohra.jpg"
+  },
+  {
+    "dest_id": 12,
+    "dest_name": "Andaman",
+    "state": "Andaman &",
+    "vibe": "Adventure",
+    "descrip": "Dive into clear waters ,explore colourful sea life and discover islands where sea becomes part of the adventure.",
+    "img_path": "images/Andaman.jpg"
+  },
+  {
+    "dest_id": 13,
+    "dest_name": "Kashmir",
+    "state": "Jammu & Kashmir",
+    "vibe": "Relaxing",
+    "descrip": "Snowy mountains, peaceful lakes and green valleys come together in Kashmir, creating a landscape that feels calm and refreshing.",
+    "img_path": "images/Kashmir.jpg"
+  },
+  {
+    "dest_id": 14,
+    "dest_name": "Gangtok",
+    "state": "Sikkim",
+    "vibe": "Relaxing",
+    "descrip": "Green hills, mountain views and peaceful streets surround Gangtok,creating a refreshing escape with nature all around.",
+    "img_path": "images/Gangtok.jpg"
+  },
+  {
+    "dest_id": 15,
+    "dest_name": "Coorg",
+    "state": "Karnataka",
+    "vibe": "Relaxing",
+    "descrip": "Green hills, coffee farms and cool weather make Coorg a perfect place to relax close to nature.",
+    "img_path": "images/Coorg.jpg"
+  },
+  {
+    "dest_id": 16,
+    "dest_name": "Munnar",
+    "state": "Kerala",
+    "vibe": "Relaxing",
+    "descrip": "Munnar's rolling tea gardens and misty hills create a peaceful view that makes every walk feel refreshing.",
+    "img_path": "images/Munnar.jpg"
+  },
+  {
+    "dest_id": 17,
+    "dest_name": "Kutch",
+    "state": "Gujrat",
+    "vibe": "Cultural",
+    "descrip": "Colourful crafts,folk music and traditional villages make Kutch a beautiful place to experience Gujrat's rich culture.",
+    "img_path": "images/Kutch.jpg"
+  },
+  {
+    "dest_id": 18,
+    "dest_name": "Kolkata",
+    "state": "West Bengal",
+    "vibe": "Cultural",
+    "descrip": "Art,literature,festivals and food give Kolkata a lively culture that can be felt throughout the city.",
+    "img_path": "images/Kolkata.jpg"
+  },
+  {
+    "dest_id": 19,
+    "dest_name": "Puri",
+    "state": "Odisha",
+    "vibe": "Cultural",
+    "descrip": "Ancient traditions, local art and the famous Jagannath  Temple make Puri a special place to experience Odisha's culture.",
+    "img_path": "images/Puri.jpg"
+  },
+  {
+    "dest_id": 20,
+    "dest_name": "Jaisalmer",
+    "state": "Rajasthan",
+    "vibe": "Cultural",
+    "descrip": "Folk music,colourful clothes and desert traditions bring the rich culture of rajasthan to life in Jaisalmer.",
+    "img_path": "images/Jaisalmer.jpg"
+  }
+];
+const places = [
+  {
+    "place_id": 101,
+    "dest_id": 1,
+    "place_name": "Nidhivan",
+    "route": "R1",
+    "descrip": "Nidhivan is a quiet and sacred place in Vrindavan, surrounded by small, twisted trees. It is believed that Radha and Krishna visit this place at night, which makes Nidhivan feel peaceful, spiritual, and full of mystery.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1792482104/Untitled-design-35.jpg"
+  },
+  {
+    "place_id": 102,
+    "dest_id": 1,
+    "place_name": "Banke Bihari Temple",
+    "route": "R1",
+    "descrip": "Banke Bihari Temple is home to the beloved form of Krishna known as Banke Bihari. The idol is believed to have appeared from the devotion of Swami Haridas, who found Krishna and Radha together in their divine form. Devotees believe that looking into Banke Bihari’s eyes can make you feel deeply connected to him, making every visit a special experience.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1792482344/587e6b9658f4ac271a08b946.jpg"
+  },
+  {
+    "place_id": 103,
+    "dest_id": 1,
+    "place_name": "Radha Raman Temple",
+    "route": "R1",
+    "descrip": "Radha Raman Ji has a beautiful story of love and devotion. Gopal Bhatta Goswami wished to see Krishna in a form he could lovingly serve. It is believed that Krishna revealed Himself from a Shaligram stone as Radha Raman Ji. Even today, the temple feels like a place where that love and devotion are still alive.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605549/1280px-Radha_Raman_Temple_2.jpg.jpg"
+  },
+  {
+    "place_id": 104,
+    "dest_id": 1,
+    "place_name": "Yamuna River",
+    "route": "R2",
+    "descrip": "Yamuna Ji is not just a river, but a beloved goddess in Vrindavan. Her waters are part of Krishna’s stories—from defeating Kaliya Naag to the Raas Leela on her banks. Standing by her waters feels like stepping into a story where Krishna’s childhood and devotion still live.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605581/shri-yamuna-ji-vrindavan-m.jpg"
+  },
+  {
+    "place_id": 105,
+    "dest_id": 1,
+    "place_name": "Giriraj Parvat",
+    "route": "R3",
+    "descrip": "Giriraj Ji is not just a hill, but is lovingly worshipped as Krishna Himself. The story says Krishna lifted Govardhan on His little finger to protect the people of Braj from heavy rain sent by Indra. Today, devotees walk around the hill in Govardhan Parikrama, carrying the same story of faith and love in their hearts.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605609/GP-0005.gif"
+  },
+  {
+    "place_id": 106,
+    "dest_id": 3,
+    "place_name": "Mahakaleshwar Jyotirlinga",
+    "route": "R1",
+    "descrip": "Mahakaleshwar is one of the twelve Jyotirlingas of Lord Shiva and is worshipped as the Lord of Time. Unlike most Shiva temples, the Jyotirlinga here faces south, a direction traditionally linked with death and Yama, the god of death. Add the powerful Bhasma Aarti before sunrise, and you get an experience that feels truly unique.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605631/250px-Mahakaleshwar_Temple_2C_Ujjain.jpg.jpg"
+  },
+  {
+    "place_id": 107,
+    "dest_id": 3,
+    "place_name": "Kal Bhairav Temple",
+    "route": "R2",
+    "descrip": "Before meeting Mahakal, meet Kal Bhairav, traditionally believed to be the commander of Mahakal’s divine forces and protector of Ujjain. The temple is famous for the unusual ritual of offering liquor to Kal Bhairav, making it one of the city’s most mysterious and fascinating places to visit.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605756/yyru2dtnyk0g1.jpg"
+  },
+  {
+    "place_id": 108,
+    "dest_id": 3,
+    "place_name": "Harsiddhi Mata",
+    "route": "R1",
+    "descrip": "Harsiddhi Mata is one of Ujjain’s most sacred Shakti temples, believed to be the place where Goddess Sati’s elbow fell. The temple comes alive when its hundreds of lamps are lit in the evening, creating a beautiful sight that feels both powerful and peaceful.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605777/munnar-7.jpg"
+  },
+  {
+    "place_id": 109,
+    "dest_id": 3,
+    "place_name": "Ram Ghat",
+    "route": "R1",
+    "descrip": "Ram Ghat sits beside the sacred Shipra, in the heart of Ujjain’s deep spiritual tradition. For centuries, people have come here with prayers, hopes, and a wish for blessings. As bells ring and diyas glow on the river during the evening aarti, the ghat fills with a quiet sense of faith and peace—one that stays in your heart long after you leave.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605852/66.jpg"
+  },
+  {
+    "place_id": 110,
+    "dest_id": 3,
+    "place_name": "Mangalnath Temple",
+    "route": "R2",
+    "descrip": "It is believed that Mangal (Mars) was born from Lord Shiva’s sweat, creating a sacred connection between the two. Devotees visit this temple to pray for strength, peace, and relief from problems in marriage, family, and life. This deep faith makes Mangal Nath Temple a special place to experience in Ujjain.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605879/894160992Mangalnath_Temple-2.jpg"
+  },
+  {
+    "place_id": 111,
+    "dest_id": 2,
+    "place_name": "Kashi Vishwanath Temple",
+    "route": "R1",
+    "descrip": "Kashi Vishwanath is one of the 12 sacred Jyotirlingas of Lord Shiva, believed to be his eternal home in Kashi. It is believed that Shiva guides souls towards moksha here. For centuries, people have come with their deepest prayers, hopes, and wishes. Amid the bells, chants, and devotion, the temple carries a feeling of Shiva’s presence that is hard to put into words.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605904/250px-Kashi_Vishwanath.jpg.jpg"
+  },
+  {
+    "place_id": 112,
+    "dest_id": 2,
+    "place_name": "Dashashwamedh Ghat",
+    "route": "R1",
+    "descrip": "Dashashwamedh means “ten Ashwamedha Yajnas.” It is believed that Lord Brahma performed these sacred Yajnas here to welcome Lord Shiva to Kashi. This is how the ghat got its name and became one of the most important places of faith in Varanasi. The evening Ganga Aarti is known for its grand rituals, glowing lamps, bells, chants, and conch shells, creating a powerful spiritual atmosphere by the river.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605993/e2ce355d90ad04dad28083158d1a38f6516f7477d172aa3ea7e7e1af25736953.jpg"
+  },
+  {
+    "place_id": 113,
+    "dest_id": 2,
+    "place_name": "Kal Bhairav Temple",
+    "route": "R1",
+    "descrip": "A fascinating story connects Kaal Bhairav with the heart of Kashi. When Brahma’s pride grew, Shiva appeared as Bhairava and cut off his fifth head. Carrying the skull, Bhairava reached Kashi, where he was finally freed from the sin. Since then, he has been known as the Kotwal of Kashi, protecting the city. It is believed that he still resides in Kashi in this form, watching over the city and its people.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793606038/d78e5c57f5904e1e4cd0f25587fafbaf.jpg"
+  },
+  {
+    "place_id": 114,
+    "dest_id": 2,
+    "place_name": "Sankat Mochan Hanuman Temple",
+    "route": "R2",
+    "descrip": "Sankat Mochan Hanuman Temple is a place where people come with their worries, prayers, and hopes. **“Sankat Mochan”** means “the one who removes troubles.” It is believed that Tulsidas had a vision of Lord Hanuman here and later built the temple. For devotees, it is a place to leave their worries behind, feel Hanuman’s presence, and find strength. and peace....remove repitation",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793606226/189.jpg"
+  },
+  {
+    "place_id": 115,
+    "dest_id": 2,
+    "place_name": "Manikarnika Ghat",
+    "route": "R3",
+    "descrip": "Manikarnika Ghat offers a glimpse into Varanasi’s unique view of life and death. Here, death is not only mourned but seen as a sacred journey towards moksha. Beside the Ganges, ancient rituals continue day and night. Legend says Goddess Parvati’s earring (mani) fell here, giving the ghat its name—“the jewel of the ear.”",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793606257/507d9e404184eab54fc7b3c583cac6c5384d5128eb651a66e03174323fb77d15.jpg"
+  },
+  {
+    "place_id": 116,
+    "dest_id": 4,
+    "place_name": "Ramanathaswamy Temple",
+    "route": "R1",
+    "descrip": "Ramanathaswamy Temple is where the story of Lord Rama and his devotion to Shiva comes alive. According to tradition, Rama worshipped Shiva here before setting out for Lanka. With its magnificent corridors, sacred wells and centuries-old rituals, the temple feels less like a monument and more like a living chapter of the Ramayana—where faith, devotion and legend still meet.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793606320/ramanathaswamy-temple-rameswaram.jpg"
+  },
+  {
+    "place_id": 117,
+    "dest_id": 4,
+    "place_name": "Agni Theertham",
+    "route": "R1",
+    "descrip": "Agni Theertham is where Rameshwaram’s ancient stories meet the sea. Tradition says Lord Rama crossed these waters on the legendary bridge built towards Lanka, and later bathed here after the war with Ravana. Today, pilgrims take a holy dip in the same sacred waters, connecting with a story and faith that have lived here for centuries.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793606348/Agnee-theertham-rameswaram.jpg"
+  },
+  {
+    "place_id": 118,
+    "dest_id": 4,
+    "place_name": "Gandhamadhana Parvatham",
+    "route": "R2",
+    "descrip": "Gandhamadhana Parvatham is a small sacred hill with a special connection to Lord Rama. At the top, a shrine preserves what is believed to be Rama’s footprint. Standing here, with the sea and island stretching quietly below, feels like touching a small piece of the Ramayana—a peaceful place where legend and landscape come together.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607094/gandhamadhana-parvatham-temple-located-mountain-near-rameshwaram-rameswaram-india-january-th-235789191.jpg"
+  },
+  {
+    "place_id": 119,
+    "dest_id": 4,
+    "place_name": "Panchmukhi Hanuman Temple",
+    "route": "R2",
+    "descrip": "Panchmukhi Hanuman Temple is associated with the story of Hanuman journeying to Patala to rescue Rama and Lakshmana. To defeat Ahiravana, he took five faces—Hanuman, Narasimha, Garuda, Varaha and Hayagriva—each symbolising a divine power, and extinguished five lamps at once. Visiting this temple offers a quiet sense of Hanuman’s courage and devotion, making the ancient Ramayana feel remarkably close and alive.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607115/m_The_Five_Faced_Hanuman_Temple_Rameshwaram_1_p_853_640.jpg"
+  },
+  {
+    "place_id": 120,
+    "dest_id": 4,
+    "place_name": "Dhanushkodi",
+    "route": "R3",
+    "descrip": "Dhanushkodi, meaning “the end of the bow,” is traditionally believed to be the place where Lord Rama’s army began building the Ram Setu towards Lanka. It is also believed that Rama marked this point with his bow, giving the place its name. Today, the quiet shore and endless sea offer a beautiful connection to the ancient story of Rama and the Ramayana.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607129/b0opytravnxd1.jpg"
+  },
+  {
+    "place_id": 121,
+    "dest_id": 5,
+    "place_name": "Virupaksha Temple",
+    "route": "R1",
+    "descrip": "Imagine walking through Hampi, a city that was once filled with grand palaces, busy markets, and the glory of the Vijayanagara Empire. In this very city stands Virupaksha Temple, dedicated to Lord Shiva. Even after the kingdom fell and its grand buildings turned into ruins, the temple continued to stand strong. Its old walls and beautiful carvings still tell stories of a time long gone. Step inside and feel the history of a city that time could change, but never erase.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607160/Virupaksha-Temple-Hampi-Karnataka-India.jpg"
+  },
+  {
+    "place_id": 122,
+    "dest_id": 5,
+    "place_name": "Royal Enclosure",
+    "route": "R3",
+    "descrip": "Imagine standing in a place where the kings of Hampi once lived and ruled their kingdom. The Royal Enclosure was the centre of royal life, where grand celebrations and important meetings took place. But in 1565, after the Vijayanagara army lost the Battle of Talikota, Hampi was attacked and much of the city was destroyed. Today, only parts of its grand buildings remain, giving us a glimpse of its glorious past. Walk through these remains and discover the story of a kingdom that once shone brightly but was changed forever by war.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607380/20181116-DSC_0992-min.jpg"
+  },
+  {
+    "place_id": 123,
+    "dest_id": 5,
+    "place_name": "Vittala Temple",
+    "route": "R2",
+    "descrip": "Vittala Temple was once part of the grand Vijayanagara Empire, where art and faith came together. Dedicated to Lord Vishnu, it is famous for its beautiful stone chariot and musical pillars. These pillars were specially carved so that when tapped, some were said to produce different musical notes, almost like the sounds of instruments. Though centuries have passed and much of Hampi has fallen into ruins, the temple still reflects the skills of its builders. Visit Vittala Temple and discover how ancient artists turned stone into a wonder that still leaves people amazed.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607310/vittala-temple-hampi-karnataka-5-attr-hero.jpg"
+  },
+  {
+    "place_id": 124,
+    "dest_id": 5,
+    "place_name": "Lotus Mahal",
+    "route": "R4",
+    "descrip": "Lotus Mahal was once a special place in the royal area of Hampi, where royal women are believed to have spent time and relaxed. Its beautiful design, with arches and a roof shaped like a lotus, makes it look different from other buildings of that time. Even after the Vijayanagara Empire fell in 1565 and much of Hampi was destroyed, Lotus Mahal still stands as a reminder of its royal past. Visit Lotus Mahal and step into a place where every arch tells a story of the beauty and life of a kingdom long gone.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607350/1280px-Flat_elevation_of_Lotus_Mahal_2C_Hampi__28Closeup_29.jpg.jpg"
+  },
+  {
+    "place_id": 125,
+    "dest_id": 5,
+    "place_name": "Elephant Stables",
+    "route": "R4",
+    "descrip": "Imagine a time when royal elephants were an important part of the grand Vijayanagara Empire. The Elephant Stables in Hampi were built to house these royal elephants, which were used in ceremonies and royal events. Its large rooms and beautiful domed roofs show how carefully even the animals of the royal family were cared for. While much of Hampi was damaged after the empire fell, these stables still stand proudly today. Visit the Elephant Stables and get a glimpse of a time when even the elephants were part of royal life.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607413/elephnat-stables.jpg"
+  },
+  {
+    "place_id": 126,
+    "dest_id": 6,
+    "place_name": "Shore Temple",
+    "route": "R1",
+    "descrip": "More than 1,300 years ago, the Shore Temple was built near the sea at Mahabalipuram during the rule of the Pallava kings. Dedicated to Lord Shiva and Lord Vishnu, it has stood through centuries of changing tides and powerful waves. Local legends tell of seven magnificent temples that once stood along this coast, with six believed to have disappeared beneath the sea. Though this story remains unproven, it adds a sense of mystery to the place. Stand beside the temple, listen to the waves, and feel the story of a lost world that still lives in its ancient stones.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607493/Mamallapuram-Shore-Temple-Chennai-India-Tamil-Nadu.jpg"
+  },
+  {
+    "place_id": 127,
+    "dest_id": 6,
+    "place_name": "Pancha Rathas",
+    "route": "R2",
+    "descrip": "Centuries ago, during the rule of the Pallava kings, skilled artists began carving five remarkable structures out of huge rocks at Mahabalipuram. Known as Pancha Rathas, these stone monuments are named after the five Pandava brothers and Draupadi from the Mahabharata. Though they look like chariots, they were never used for travel, and their exact purpose remains uncertain. Each structure has a different design, showing how creatively ancient artists worked with stone. Walk among these silent stone wonders and discover how the hands of ancient artists left behind a story that time could never erase.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607470/1000_F_141036791_4e3EqU87l6H6TKW1KWv8bZjeBQfwAGx4.jpg"
+  },
+  {
+    "place_id": 128,
+    "dest_id": 6,
+    "place_name": "Arjuna's Penance",
+    "route": "R3",
+    "descrip": "At Mahabalipuram, a giant rock holds two possible stories from Indian mythology. Arjuna’s Penance is believed to show either Arjuna praying to Lord Shiva for a divine weapon or King Bhagiratha praying to bring the River Ganga from heaven to Earth. The carving shows gods, sages, and animals, while a deep gap in the rock may represent the flow of the sacred river. Since both stories fit the carving, its true meaning remains debated. Look closely at this ancient artwork and discover how one rock can hold two great stories from India's past.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607655/IMG_9193-scaled.jpg"
+  },
+  {
+    "place_id": 129,
+    "dest_id": 6,
+    "place_name": "Krishna's Butter Ball",
+    "route": "R3",
+    "descrip": "Krishna’s Butter Ball in Mahabalipuram is a huge, naturally formed rock resting on a sloping hill. Its name comes from the childhood stories of Lord Krishna, who loved butter and often stole it from pots kept by his mother and the village women. The rock was not made or placed there by people; it is a natural formation that has remained in this unusual position for a very long time. Its connection to Krishna is based on its shape and local naming, not a proven historical event. Visit this amazing spot to see how nature created something so unusual that it brings a beloved childhood story to mind.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793607678/butterball.jpg"
+  },
+  {
+    "place_id": 130,
+    "dest_id": 6,
+    "place_name": "Cave Temples",
+    "route": "R4",
+    "descrip": "Carved directly into rocky hills, the Cave Temples of Mahabalipuram show how skilled artists worked with stone during the Pallava period. These temples were not built by stacking stones; instead, artists carefully cut into the rock to create pillars, shrines, and beautiful carvings. Some caves feature scenes of Hindu gods, including Lord Vishnu and Lord Shiva, bringing ancient stories to life. Even after centuries, these carvings remain a window into the art and beliefs of the people who created them. Step inside these ancient caves and discover the stories hidden within the rocks of Mahabalipuram.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608168/varaha-cave-temple.jpg"
+  },
+  {
+    "place_id": 131,
+    "dest_id": 7,
+    "place_name": "Amber Fort",
+    "route": "R1",
+    "descrip": "Step into Amber Fort and discover a world where every corner has something to tell. Once home to Rajput kings and queens, this grand fort brings together royal halls, hidden passages, and clever designs that served both beauty and safety. In the famous Sheesh Mahal, thousands of tiny mirrors could make a room sparkle in the light of just a few candles. Walk up to the higher levels, and the view of Maota Lake and the surrounding hills makes you feel as if you are looking at Jaipur through the eyes of its kings. Amber Fort is a place where you don't just see the royal past — you get to experience it.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608186/images-30-largejpg.jpg"
+  },
+  {
+    "place_id": 132,
+    "dest_id": 7,
+    "place_name": "City Palace",
+    "route": "R2",
+    "descrip": "In the heart of Jaipur, City Palace offers a glimpse into the lives of the royal family who still call part of it home. As you walk through its grand courtyards, decorated gateways, and beautiful halls, you’ll discover a blend of Rajput and Mughal architecture. One of its most striking sights is the four seasonal doorways of Pritam Niwas Chowk, each decorated with colourful designs representing a different season. From the delicate peacock doorway to the palace’s royal collections, every detail has a story to tell. Visit City Palace to experience a living piece of Jaipur’s royal history, where the past is not just preserved — it is still part of the present.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608208/330px-City_Palace_2C_Jaipur__28edited_29.jpg.jpg"
+  },
+  {
+    "place_id": 133,
+    "dest_id": 7,
+    "place_name": "Jantar Mantar",
+    "route": "R2",
+    "descrip": "Jantar Mantar is where science and history come together in a way that feels almost magical. Built centuries ago, its giant instruments helped people measure time and study the movement of the Sun and stars—without modern machines. The enormous Samrat Yantra, a giant sundial, is a reminder of how much ancient astronomers could discover using mathematics and careful observation. Visit Jantar Mantar to witness the wonder of a time when human curiosity turned the sky into a science laboratory.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608232/jantar-mantar-jaipur-rajasthan-1-attr-hero.jpg"
+  },
+  {
+    "place_id": 134,
+    "dest_id": 7,
+    "place_name": "Hawa Mahal",
+    "route": "R3",
+    "descrip": "Imagine the royal women of Jaipur watching grand processions, colourful festivals, and busy streets without stepping outside the palace. Hawa Mahal, with its 953 small windows, made this possible. Its delicate stone screens allowed the queens and princesses to see the world outside while keeping them hidden from people on the streets. Even the windows had a clever purpose: they let cool breezes flow through the palace during Rajasthan’s hot days.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608247/hawa-mahal.jpg"
+  },
+  {
+    "place_id": 135,
+    "dest_id": 7,
+    "place_name": "Jaigarh Fort",
+    "route": "R4",
+    "descrip": "Built high in the Aravalli Hills, Jaigarh Fort was designed to protect the royal kingdom of Jaipur. Unlike a palace made mainly for royal living, this fort was built for defence, with strong walls, watchtowers, and secretive pathways across the hills. Its biggest attraction is Jaivana, one of the largest wheeled cannons ever made, showing the power and skill of the kingdom’s craftsmen. From the fort walls, you can look across the rugged hills and see why this location was so important for protecting Amber Fort below.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608272/jaigarh-fort.jpg"
+  },
+  {
+    "place_id": 136,
+    "dest_id": 8,
+    "place_name": "Ajanta Caves",
+    "route": "R1",
+    "descrip": "Carved into a horseshoe-shaped hillside, the Ajanta Caves hold stories of a time when art and faith came together. These ancient Buddhist caves are filled with paintings and sculptures showing the life of Buddha and scenes from everyday life centuries ago. What makes them truly special is that artists created these beautiful works inside rock-cut caves, using simple tools and natural colours. Even after so many centuries, some paintings still survive, giving us a glimpse into ancient India. Visit Ajanta to see how artists turned dark stone caves into a lasting treasure of Indian art and Buddhist history.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608296/ajanta-banner1.jpg"
+  },
+  {
+    "place_id": 137,
+    "dest_id": 8,
+    "place_name": "Ellora Caves",
+    "route": "R2",
+    "descrip": "The Ellora Caves are a remarkable example of how human skill and faith can turn solid rock into something extraordinary. Carved into a hillside, these caves include Buddhist, Hindu, and Jain monuments standing side by side, showing how different beliefs became part of the same landscape. The most amazing sight is Kailasa Temple, carved from a single massive rock from the top down—not built by joining separate stones. Imagine the patience and skill it took to shape an entire temple this way, centuries before modern machines existed.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608307/ellora-caves-chhatrapati-sambhaji-nagar-maharashtra-india.webp"
+  },
+  {
+    "place_id": 138,
+    "dest_id": 8,
+    "place_name": "Bibi Ka Maqbara",
+    "route": "R3",
+    "descrip": "Built in memory of Dilras Banu Begum, the beloved wife of Aurangzeb, Bibi Ka Maqbara was commissioned by their son, Prince Azam Shah, as a tribute to his mother. Often called the Mini Taj Mahal, its grand dome, tall minarets, and beautiful gardens remind visitors of the famous monument in Agra. But here, the story is also about a son honouring his mother through a lasting memorial. Walk through its peaceful gardens and discover how love and remembrance became part of Mughal history.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608386/1280px-The_Tomb_of_Dilras_Banu_Begum.jpg.jpg"
+  },
+  {
+    "place_id": 139,
+    "dest_id": 8,
+    "place_name": "Chhatrapati Shivaji Maharaj Museum",
+    "route": "R3",
+    "descrip": "Chhatrapati Sambhajinagar (formerly Aurangabad) has a rich history shaped by different rulers, making it a fascinating place to explore Maharashtra’s past. The Chhatrapati Shivaji Maharaj Museum helps keep the legacy of the great Maratha king alive through displays of old weapons, coins, sculptures, and historical objects. These artefacts offer a glimpse into the world of warriors, kingdoms, and changing times. Visit to discover how the story of Chhatrapati Shivaji Maharaj continues to inspire pride and courage generations later.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608371/chhatrapati-shivaji-maharaj-museum-chhatrapati-sambhaji-nagar-maharashtra-2-attr-hero.jpg"
+  },
+  {
+    "place_id": 140,
+    "dest_id": 8,
+    "place_name": "Daulatabad Fort",
+    "route": "R2",
+    "descrip": "Rising dramatically from a rocky hill near Chhatrapati Sambhajinagar, Daulatabad Fort was once considered one of the strongest forts in India. Its clever defence system included twisting paths, steep steps, and dark passages designed to confuse enemies and protect the kingdom. The fort was so strategically important that Sultan Muhammad bin Tughlaq even shifted his capital from Delhi to Daulatabad in the 14th century, though the move was later reversed. Climb its challenging paths and discover how a hilltop fortress became part of one of the most unusual chapters in Indian history.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608585/1280px-Daulatabad_Fort_a_view.JPG.jpg"
+  },
+  {
+    "place_id": 141,
+    "dest_id": 9,
+    "place_name": "Kunjapuri Temple Trek",
+    "route": "R1",
+    "descrip": "Kunjapuri Temple offers an adventurous experience with trekking through forest trails and challenging mountain paths. Located at a height of around 1,676 metres, it attracts adventure lovers with its breathtaking mountain views and scenic surroundings. Visitors can enjoy sunrise and sunset exploration from the hilltop, where the changing colours of the sky create a memorable experience. The journey combines trekking, nature exploration and stunning Himalayan landscapes.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608672/DSC_5861.jpg"
+  },
+  {
+    "place_id": 142,
+    "dest_id": 9,
+    "place_name": "Shivpuri",
+    "route": "R2",
+    "descrip": "Shivpuri is a popular adventure destination known for its thrilling river rafting experiences on the Ganga. Surrounded by green hills and flowing rivers, it offers exciting activities like river rafting, camping, cliff jumping and kayaking. Adventure lovers can enjoy navigating through challenging rapids while exploring the beauty of the Himalayan foothills. Its riverside camps and outdoor activities make Shivpuri a perfect spot for an action-filled escape.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608734/79da5ce109065ebca1804d4388182860.jpg"
+  },
+  {
+    "place_id": 143,
+    "dest_id": 9,
+    "place_name": "Mohanchatti",
+    "route": "R3",
+    "descrip": "Mohan Chatti is an exciting adventure destination surrounded by lush green forests and beautiful mountain landscapes. It is especially famous for thrilling bungee jumping, giant swings and flying fox experiences that attract adrenaline seekers. Visitors can also enjoy trekking, nature exploration and scenic valley views. With its combination of high-altitude adventure activities and peaceful natural surroundings, Mohan Chatti offers an unforgettable outdoor experience.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608750/mohan-chatti-resort.jpg"
+  },
+  {
+    "place_id": 144,
+    "dest_id": 9,
+    "place_name": "Neer Garh Waterfall",
+    "route": "R4",
+    "descrip": "Neer Garh Waterfall is known for its multi-level cascades, natural rock pools and refreshing mountain streams. Adventure seekers can explore its rocky pathways, climb between different waterfall levels and discover hidden bathing spots along the trail. The journey offers opportunities for stream crossing, water exploration and capturing scenic views of cascading water surrounded by dense greenery",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608794/caption.jpg"
+  },
+  {
+    "place_id": 145,
+    "dest_id": 10,
+    "place_name": "Marine Drive",
+    "route": "R2",
+    "descrip": "Marine Drive is a popular adventure spot along the Ganga, offering thrilling outdoor experiences surrounded by hills and river landscapes. It is known for white-water rafting, riverside camping and exciting water activities. Visitors can experience the rush of navigating river rapids, explore rocky riverbanks and enjoy outdoor adventures amidst the natural beauty of the Himalayan foothills.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608824/marine-drive-2026-05-49918ab50c170669cdb159f67b42bea0.jpg"
+  },
+  {
+    "place_id": 146,
+    "dest_id": 10,
+    "place_name": "Nubra valley",
+    "route": "R1",
+    "descrip": "Nubra Valley offers a unique adventure where the beauty of the Himalayas meets the charm of a cold desert. At Hunder Sand Dunes, visitors can enjoy ATV rides (four-wheeled all-terrain vehicles) across sandy landscapes and camel safaris on rare double-humped Bactrian camels. The valley also offers opportunities for mountain exploration, scenic drives and photography. Surrounded by snow-covered peaks and vast open landscapes, Nubra is a perfect destination for those seeking thrilling experiences and unforgettable mountain adventures.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608935/nubra-valley.jpg"
+  },
+  {
+    "place_id": 147,
+    "dest_id": 10,
+    "place_name": "Pangong Lake",
+    "route": "R2",
+    "descrip": "Pangong Lake invites adventure lovers to explore its breathtaking high-altitude landscape, surrounded by rugged mountains and vast open valleys. Enjoy thrilling bike rides and road trips along winding mountain roads, camping near the lakeside and exploring the beautiful surroundings. The lake's changing shades of blue and peaceful yet challenging terrain make every journey an unforgettable adventure in the heart of Ladakh.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793608980/pangong-lake-ladakh-1.jpg"
+  },
+  {
+    "place_id": 148,
+    "dest_id": 10,
+    "place_name": "Sham Valley",
+    "route": "R3",
+    "descrip": "Sham Valley, also known as the Apricot Valley, is famous for its beautiful villages, apricot orchards and unique landscapes. Adventure seekers can enjoy trekking through rocky mountain trails, cycling along winding roads and exploring traditional Ladakhi villages. The Sham Valley trek offers a chance to cross small mountain passes and experience local life along the way. Its blend of village exploration, mountain adventures and scenic apricot gardens makes it different from Ladakh's cold desert destinations",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609001/Sangam-point-at-Nimmu-Leh-Ladakh-trip-1024x682.jpg"
+  },
+  {
+    "place_id": 149,
+    "dest_id": 10,
+    "place_name": "Markha Valley",
+    "route": "R4",
+    "descrip": "Markha Valley is famous for its challenging high-altitude trekking trails, remote villages and breathtaking mountain landscapes. Adventure lovers can experience river crossings, walk through narrow mountain paths and cross high passes surrounded by snow-covered peaks. The Markha Valley Trek takes visitors through traditional Ladakhi settlements, deep valleys and beautiful campsites. Its rugged terrain and untouched wilderness make it one of the most exciting trekking experiences in Ladakh.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609025/Markha-valley-trek-cover.jpg"
+  },
+  {
+    "place_id": 150,
+    "dest_id": 10,
+    "place_name": "Khardung La",
+    "route": "R1",
+    "descrip": "Khardung La is one of Ladakh's most famous high mountain passes, known for its thrilling roads and breathtaking Himalayan views. Located at an altitude of approximately 5,359 metres, it attracts adventure lovers for exciting bike rides, challenging mountain drives and high-altitude exploration. The journey through winding roads, snow-covered peaks and rugged terrain offers an unforgettable experience. Reaching the top feels like a true achievement for every mountain explorer.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609079/Supriya-Pava-Nongriat-India-1.jpg"
+  },
+  {
+    "place_id": 151,
+    "dest_id": 11,
+    "place_name": "Nongriat",
+    "route": "R1",
+    "descrip": "Nongriat is a beautiful adventure destination hidden deep within Meghalaya's green hills, famous for its iconic Double Decker Living Root Bridge. Reaching the village itself is an adventure, involving a challenging trek down hundreds of stone steps through dense forests, streams and suspension bridges. Visitors can explore natural pools, waterfalls and the fascinating living root bridges formed by intertwining tree roots.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609106/img-20180206-155255-791.jpg"
+  },
+  {
+    "place_id": 152,
+    "dest_id": 11,
+    "place_name": "Mawsmai Cave",
+    "route": "R2",
+    "descrip": "Mawsmai Cave offers an exciting underground adventure through narrow limestone passages, natural rock formations and mysterious chambers. Visitors can walk through winding tunnels, squeeze through narrow openings and explore beautiful stalactites and stalagmites formed over thousands of years. The cave's dim natural light, rocky pathways and unique formations make every turn an exciting discovery. It is a perfect spot for those who enjoy cave exploration and unusual natural wonders.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609318/maw-1592276654.jpg"
+  },
+  {
+    "place_id": 153,
+    "dest_id": 11,
+    "place_name": "Nohkalikai Falls",
+    "route": "R3",
+    "descrip": "Nohkalikai Falls is one of India's tallest plunge waterfalls, cascading from a height of around 340 metres into a beautiful turquoise pool. Adventure lovers can explore the surrounding forest trails, enjoy challenging viewpoints and capture breathtaking views of the waterfall and deep green cliffs. The misty atmosphere, dramatic landscapes and powerful waterfall create an unforgettable experience for those who love nature exploration and mountain adventures",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609352/noh-ka-likai-falls.jpg"
+  },
+  {
+    "place_id": 154,
+    "dest_id": 11,
+    "place_name": "Wei Sawdong Falls",
+    "route": "R4",
+    "descrip": "Wei Sawdong Falls is a stunning three-tiered waterfall hidden amidst the lush green forests of Meghalaya. Reaching its viewpoint involves climbing steep bamboo and wooden stairways along the hillside, making the journey an exciting little adventure. Visitors can witness three beautiful turquoise pools formed by cascading water, surrounded by dense greenery and rocky cliffs. Its unique staircase viewpoint and layered waterfall make it a memorable spot for trekking, exploration and photography",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609397/the-falls-from-the-bottom.jpg"
+  },
+  {
+    "place_id": 155,
+    "dest_id": 11,
+    "place_name": "Dainthlen Falls",
+    "route": "R5",
+    "descrip": "Dainthlen Falls gets its name from Thlen, a mythical giant snake from Khasi folklore. According to local stories, the snake was defeated at this place, and the marks on the nearby rocks are believed to show its story. Visitors can explore the wide rocky riverbed, walk across natural stone formations and enjoy the beautiful waterfall. Its interesting local legend and unique rocky landscape make it a special place for adventure and exploration.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609422/The_Legend_of_Dainthlen_Falls_c4c1a7a41a.webp"
+  },
+  {
+    "place_id": 156,
+    "dest_id": 12,
+    "place_name": "North Bay Island",
+    "route": "R1",
+    "descrip": "North Bay Island is a paradise for adventure lovers, where the clear blue waters invite you to dive into an exciting underwater world. Experience the thrill of scuba diving, sea walking and snorkelling as you explore colourful coral reefs and beautiful marine life. Visitors can also enjoy glass-bottom boat rides to witness the hidden beauty beneath the sea. Every wave brings a new experience, making North Bay a perfect place for those who love water adventures and exploring the unknown.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609448/North-Bay-Andaman-shore-.jpg"
+  },
+  {
+    "place_id": 157,
+    "dest_id": 12,
+    "place_name": "Ross Island",
+    "route": "R1",
+    "descrip": "Ross Island takes you on an adventure through the forgotten stories of the past, surrounded by tropical forests and beautiful sea views. Explore the ruins of old British buildings, walk through pathways covered with giant tree roots and discover the remains of a once-thriving colonial settlement. Visitors can also enjoy cycling and nature walks while spotting friendly deer and peacocks. Every corner feels like stepping into a lost chapter of history, making it a unique blend of exploration, nature and adventure",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609474/p1070024.jpg"
+  },
+  {
+    "place_id": 158,
+    "dest_id": 12,
+    "place_name": "Elephant Beach",
+    "route": "R2",
+    "descrip": "Elephant Beach is a perfect escape for those who love thrilling water adventures and crystal-clear blue waters. Known for its colourful coral reefs and rich marine life, it offers exciting activities like snorkelling, scuba diving, jet skiing, sea walking and banana boat rides. Visitors can also enjoy speedboat rides through the beautiful island waters. Whether exploring underwater life or riding the waves, every moment here brings a new splash of adventure.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609542/24d1bb4341377a9ae24545d7aacd55c4.jpg"
+  },
+  {
+    "place_id": 159,
+    "dest_id": 12,
+    "place_name": "Radhanagar Beach",
+    "route": "R2",
+    "descrip": "Ready to chase the waves and watch the sky turn golden? Radhanagar Beach welcomes you with its soft white sand, turquoise waters and endless blue horizon. Take a refreshing swim, enjoy a beach walk, explore the beautiful coastline or simply wait for a magical sunset. Known for its stunning natural beauty, this beach offers the perfect mix of relaxation and seaside exploration. Sometimes, the best adventure is simply getting lost in the beauty of the sea!",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609570/radhanagar-beach.jpg"
+  },
+  {
+    "place_id": 160,
+    "dest_id": 12,
+    "place_name": "Baratang Limestone Caves",
+    "route": "R3",
+    "descrip": "Ready to explore a world hidden beneath the earth? The Limestone Caves of Baratang take you through a fascinating journey of natural wonders. Reach the caves through an exciting boat ride through mangrove forests, followed by a short walk through the jungle. Inside, discover amazing limestone formations hanging from the roof and rising from the ground, shaped naturally over thousands of years. Every turn reveals a new shape and wonder, making it a thrilling experience for curious explorers!",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609594/673745439c3c3178_baratang_island.jpg"
+  },
+  {
+    "place_id": 161,
+    "dest_id": 13,
+    "place_name": "Dal Lake",
+    "route": "R1",
+    "descrip": "Ever imagined exploring a lake while sitting in a beautifully decorated wooden boat? Dal Lake offers the famous Shikara ride, where you glide across the calm waters in a traditional Kashmiri boat. Enjoy views of snow-covered mountains, floating gardens and colourful floating markets selling flowers, handicrafts and local items. You can also stay in traditional wooden houseboats and experience life on the lake. From peaceful boat rides to exploring floating markets, Dal Lake offers a beautiful way to discover Kashmir.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609792/lake-dal-shikava-boat.jpg"
+  },
+  {
+    "place_id": 162,
+    "dest_id": 13,
+    "place_name": "Nishat Bagh",
+    "route": "R1",
+    "descrip": "Step into a peaceful garden where time seems to slow down. Nishat Bagh, also known as the Garden of Joy, welcomes you with beautiful flower beds, flowing fountains and shady Chinar trees. Take a leisurely walk along its twelve terraced levels, sit by the water channels and enjoy the soothing views of Dal Lake and the Zabarwan Mountains. It's a perfect place to escape the rush, breathe in the fresh air and enjoy some quiet moments amidst nature",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609815/nishat-garden-srinagar.jpg"
+  },
+  {
+    "place_id": 163,
+    "dest_id": 13,
+    "place_name": "Shalimar Bagh",
+    "route": "R1",
+    "descrip": "Escape into the calm beauty of Shalimar Bagh, where gentle fountains, green lawns and beautiful flower beds create a peaceful atmosphere. Built by Mughal Emperor Jahangir for his wife Noor Jahan, this historic garden is surrounded by tall Chinar trees and offers lovely views of the mountains. Take a slow walk through its three terraced sections, relax beside the flowing water and enjoy the quiet charm of this beautiful Mughal garden. It's a perfect place to unwind and enjoy Kashmir at its own pace.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609857/shalimar-bagh-srinagar-kashmir.jpg"
+  },
+  {
+    "place_id": 164,
+    "dest_id": 13,
+    "place_name": "Aru Valley",
+    "route": "R2",
+    "descrip": "Imagine spending a day where the only sounds are flowing streams, birds singing and the cool mountain breeze! Aru Valley is a beautiful escape surrounded by green meadows, pine forests and snow-covered mountains. Enjoy a gentle pony ride through open valleys, explore peaceful walking trails, try fishing in clear streams or simply sit by the riverside and take in the views. Away from crowded tourist spots, Aru Valley offers the perfect chance to slow down, breathe freely and enjoy nature's quiet magic.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609877/aru-city.jpg"
+  },
+  {
+    "place_id": 165,
+    "dest_id": 13,
+    "place_name": "Sonamarg",
+    "route": "R3",
+    "descrip": "Imagine a place where golden meadows meet snow-covered mountains and crystal-clear rivers flow through open valleys! Sonamarg, known as the Meadow of Gold, offers a refreshing escape into nature. Enjoy a scenic pony ride to Thajiwas Glacier, take peaceful walks along the Sindh River, explore green meadows and admire the beautiful mountain views.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609922/1280px-Sonmarg_rishav7336.jpg.jpg"
+  },
+  {
+    "place_id": 166,
+    "dest_id": 14,
+    "place_name": "MG Marg",
+    "route": "R1",
+    "descrip": "Enjoy a refreshing stroll along MG Marg, one of Gangtok's most loved pedestrian streets. With colourful flowers, beautifully maintained pathways and charming cafés, it offers a lovely place to slow down and enjoy the surroundings. Sit on a cosy bench, sip some hot coffee, explore local shops or try delicious Sikkimese food. With no vehicles allowed on the street, you can enjoy a relaxed walk and soak in the cheerful charm of Gangtok",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609940/img-20201203-165738-largejpg.jpg"
+  },
+  {
+    "place_id": 167,
+    "dest_id": 14,
+    "place_name": "Enchey Monastery",
+    "route": "R1",
+    "descrip": "Step into a peaceful place where colourful prayer flags dance with the mountain breeze. Enchey Monastery is a beautiful Buddhist monastery known for its traditional architecture, prayer wheels and colourful wall paintings. Walk around the monastery, enjoy the quiet surroundings and listen to the gentle sounds of prayers. Surrounded by green hills, it offers a lovely escape to sit back, find inner peace and experience the spiritual side of Gangtok.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609968/c40ef340-d0ad-47ba-97d5-4d3944460384.webp"
+  },
+  {
+    "place_id": 168,
+    "dest_id": 14,
+    "place_name": "Ban Jhakri Falls",
+    "route": "R2",
+    "descrip": "Enjoy the refreshing beauty of Banjhakri Falls, where water flows down from a height of around 30 metres into a beautiful pool. Take a leisurely walk through the green park, cross charming bridges and explore traditional Sikkimese sculptures and small huts inspired by local folklore. The sound of falling water and the cool forest surroundings make it a lovely place to relax and enjoy nature.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793609998/banjhakri-water-falls.jpg"
+  },
+  {
+    "place_id": 169,
+    "dest_id": 14,
+    "place_name": "Saramsa Garden",
+    "route": "R2",
+    "descrip": "Looking for a quiet corner surrounded by flowers and greenery? Saramsa Garden is a beautiful escape filled with colourful seasonal flowers, well-maintained lawns and peaceful walking paths. Originally developed for growing fruits and medicinal plants, the garden is now a lovely spot to enjoy nature. Take a slow walk, relax on the green lawns and enjoy the fresh mountain air away from the usual sightseeing rush.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610024/view-from-another-angle.jpg"
+  },
+  {
+    "place_id": 170,
+    "dest_id": 14,
+    "place_name": "Tsomgo Lake",
+    "route": "R3",
+    "descrip": "Let the beauty of the mountains and changing colours of the water refresh your mind at Tsomgo Lake. Located at a high altitude, this glacial lake is surrounded by snow-covered mountains and offers a different view in every season. Enjoy a peaceful walk along its shores, admire the reflections on the water or take a traditional yak ride around the lake. The calm atmosphere and stunning surroundings make it one of Sikkim's most beautiful natural escapes.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610047/tsomgo-lake.jpg"
+  },
+  {
+    "place_id": 171,
+    "dest_id": 15,
+    "place_name": "Raja's Seat",
+    "route": "R1",
+    "descrip": "Imagine watching the sky turn golden as the sun slowly disappears behind the green hills of Coorg! Raja’s Seat is a beautiful garden viewpoint known for its breathtaking valley views and colourful flower beds. Take a relaxed walk through the garden, find a peaceful spot to sit and enjoy the cool breeze. The evening view, with layers of misty hills stretching into the distance, makes every moment feel special.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610229/af9ddb6e-04e9-4b5c-b689-82f14f665147.jpg"
+  },
+  {
+    "place_id": 172,
+    "dest_id": 15,
+    "place_name": "Abbey Falls",
+    "route": "R1",
+    "descrip": "Ready to enjoy the refreshing sound of water rushing through a lush green forest? Abbey Falls is a beautiful waterfall where water cascades down rocky steps, surrounded by coffee plantations and thick greenery. Follow the short pathway through the plantations and cross the hanging bridge to get a lovely view of the falls. Feel the cool mist in the air and take a moment to enjoy nature at its most refreshing.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610796/abbey-falls.jpg"
+  },
+  {
+    "place_id": 173,
+    "dest_id": 15,
+    "place_name": "Kaveri Nisargadhama",
+    "route": "R2",
+    "descrip": "Imagine walking across a hanging bridge and entering a green island where the sound of the river follows you everywhere! At Kaveri Nisargadhama, you can enjoy quiet nature walks, relax under tall trees and spend time watching the flowing river. Meet the deer and rabbits at the small park or simply sit back and enjoy the peaceful surroundings. It's a lovely place to take a break and enjoy Coorg without any rush.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610833/kaveri-nisargadhama-forest-park-coorg-tourism-header.jpg"
+  },
+  {
+    "place_id": 174,
+    "dest_id": 15,
+    "place_name": "Dubare Elephant Camp",
+    "route": "R2",
+    "descrip": "Ever wanted to see elephants from really close and learn how they spend their day? At Dubare Elephant Camp, you can watch these gentle giants during their daily care and feeding activities. Learn about their habits from the trained staff and enjoy seeing them in their natural surroundings near the River Kaveri. If you're lucky, you may also spot elephants enjoying the water. It's a special experience that brings you closer to these amazing animals.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610864/dubare-elephant-camp.jpg"
+  },
+  {
+    "place_id": 175,
+    "dest_id": 15,
+    "place_name": "Mandalpatti",
+    "route": "R3",
+    "descrip": "Imagine standing on a hilltop with clouds drifting around you and endless green hills in every direction! Mandalpatti offers some of the most beautiful mountain views in Coorg. The journey itself is special, with a thrilling off-road jeep ride through winding paths and forest-covered hills. Once you reach the top, take your time, enjoy the fresh air and capture the stunning views. It's a perfect place to pause and enjoy the beauty of the mountains.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611879/image.jpg"
+  },
+  {
+    "place_id": 176,
+    "dest_id": 16,
+    "place_name": "Pothamedu View Point",
+    "route": "R1",
+    "descrip": "Ever imagined watching endless green tea gardens spread across beautiful hills? Pothamedu View Point offers a lovely view of Munnar's tea plantations, mist-covered mountains and deep valleys. Enjoy a peaceful drive to the viewpoint, take a slow walk and breathe in the cool mountain air. On a clear day, you can see layers of hills stretching far into the distance. It's a perfect spot to pause, enjoy the view and capture some beautiful memories.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611879/image.jpg"
+  },
+  {
+    "place_id": 177,
+    "dest_id": 16,
+    "place_name": "Blossom Hydel Park",
+    "route": "R1",
+    "descrip": "Imagine spending an afternoon surrounded by colourful flowers, green lawns and the cool breeze of Munnar! Blossom Hydel Park is a great place to take a break between your sightseeing plans. Explore its garden paths, enjoy outdoor activities like cycling and boating, or sit back and soak in the peaceful surroundings. It's not just about looking at flowers; it's about enjoying a little fun and relaxation in the middle of nature.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611897/the-blossom-hill-resort.jpg"
+  },
+  {
+    "place_id": 178,
+    "dest_id": 16,
+    "place_name": "Mattupetty Dam",
+    "route": "R2",
+    "descrip": "A beautiful lake, mountain views and a boat ride waiting for you — Mattupetty Dam makes a lovely stop in Munnar. Walk along the dam, enjoy the cool breeze or get on a boat to explore the calm waters surrounded by green hills. Keep your eyes open for birds and wildlife near the water. The peaceful setting and fun boating experience make it a place where you can easily lose track of time.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611579/ef816f84d8f32f78a34c832d6454fd3e3828801e394f46d19e7b649380403c6a.jpg"
+  },
+  {
+    "place_id": 179,
+    "dest_id": 16,
+    "place_name": "Echo Point",
+    "route": "R2",
+    "descrip": "Here's a fun little challenge for your Munnar trip — shout something and wait for the hills to answer! Echo Point is famous for its natural echo, where your voice bounces back from the surrounding mountains. Enjoy the beautiful lake views, watch the mist move across the hills or try a short boat ride if available. It's a place where a simple moment can turn into a fun memory with friends and family.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611553/photo1jpg.jpg"
+  },
+  {
+    "place_id": 180,
+    "dest_id": 16,
+    "place_name": "Kundala Lake",
+    "route": "R2",
+    "descrip": "Ready for a peaceful boat ride away from the usual crowds? Kundala Lake offers a beautiful setting with calm blue water, rolling green hills and fresh mountain air. You can choose a pedal boat, rowboat or Shikara ride to explore the lake at your own pace. Don't miss the views of the surrounding hills reflected on the water. It's the kind of place where you will want to pause, relax and enjoy every moment.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611839/kundala-dam-lake.jpg"
+  },
+  {
+    "place_id": 181,
+    "dest_id": 17,
+    "place_name": "Aina Mahal",
+    "route": "R1",
+    "descrip": "Ever imagined walking into a palace where even the walls seem to sparkle? Aina Mahal is famous for its beautiful Hall of Mirrors, with glass decorations, colourful tiles and detailed designs covering its interiors. Built during the rule of Maharao Lakhpatji, this palace brings together Indian craftsmanship and European-style decoration. Explore its royal rooms, look closely at the mirror work and discover how the rulers of Kutch once lived. Every corner has something interesting to notice!",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611228/aina-mahal-bhuj.jpg"
+  },
+  {
+    "place_id": 182,
+    "dest_id": 17,
+    "place_name": "Prag Mahal",
+    "route": "R1",
+    "descrip": "Ever wanted to explore a palace that looks straight out of a royal European story? Prag Mahal stands out with its grand stone building, tall clock tower, large windows and beautiful carved designs. Step inside to see its huge Darbar Hall, decorated with chandeliers, statues and detailed artwork. You can also climb the clock tower for a lovely view of Bhuj city. Its mix of Indian and European styles makes this palace truly different from others in Kutch.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611466/prag-mahal-palace-bhuj.jpg"
+  },
+  {
+    "place_id": 183,
+    "dest_id": 17,
+    "place_name": "Hodka Village",
+    "route": "R2",
+    "descrip": "What if you could experience the culture of Kutch through its homes, clothes and handmade art? In Hodka Village, you'll find traditional Bhunga houses decorated with colourful patterns and mirror work. Walk through the village, admire the detailed embroidery made by local communities and explore handicrafts that reflect generations of skill. You may also get a chance to enjoy traditional Kutchi food and local hospitality. Every little detail here tells a story of Kutch's rich culture.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611187/5052254682_9b3c54cc1f_b.jpg"
+  },
+  {
+    "place_id": 184,
+    "dest_id": 17,
+    "place_name": "Ajrakhpur",
+    "route": "R3",
+    "descrip": "Get ready to discover the art behind Kutch's famous printed fabrics! Ajrakhpur is known for its traditional block-printing workshops, where artisans create beautiful designs using hand-carved wooden blocks and natural dyes. Watch how one pattern is carefully printed again and again to form a detailed design on the fabric. You can also explore handmade scarves, clothes and other textiles. The best part? You get to see the skill and patience behind every piece, not just the finished product.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611491/Block-Printing-Ajrakhpur-Kutch_311.jpg"
+  },
+  {
+    "place_id": 185,
+    "dest_id": 17,
+    "place_name": "Bhujodi",
+    "route": "R3",
+    "descrip": "Take a closer look at the handmade beauty of Kutch at Bhujodi! This village is known for its traditional weavers, who turn colourful threads into beautiful fabrics using handlooms. Watch the weaving process, notice how different patterns come together and explore shops filled with shawls, blankets and traditional textiles. What makes the visit special is seeing the craft being created right in front of you and understanding the time and skill that goes into every piece.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611118/bhujodi-kutch.png"
+  },
+  {
+    "place_id": 186,
+    "dest_id": 18,
+    "place_name": "Kumartuli",
+    "route": "R1",
+    "descrip": "Step into the world of artists where clay takes the shape of gods and goddesses! Kumartuli is known for its traditional workshops, where generations of idol makers create beautiful clay figures for festivals, especially Durga Puja. Watch the artists work on every small detail, from facial expressions to colourful decorations. You may even see unfinished idols standing beside fully decorated ones. It's not just an art visit; it's a chance to see the dedication behind Kolkata's most loved festival.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611056/Kumartuli-Annapurna-Mellor-20.jpg"
+  },
+  {
+    "place_id": 187,
+    "dest_id": 18,
+    "place_name": "Victoria Memorial",
+    "route": "R3",
+    "descrip": "Victoria Memorial stands out with its shining white marble, grand dome and impressive design inspired by different architectural styles. Inside, its galleries take you through stories of British-era India through paintings, old documents and historical objects. Outside, you can enjoy a peaceful walk through the large gardens and admire the palace-like building. It's a place where history, art and architecture come together.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793611026/1280px-Victoria_Memorial_situated_in_Kolkata.jpg.jpg"
+  },
+  {
+    "place_id": 188,
+    "dest_id": 18,
+    "place_name": "Indian Museum",
+    "route": "R3",
+    "descrip": "How about exploring a place where every room holds a different surprise from the past? The Indian Museum is one of India's oldest museums and is home to an amazing collection of historical and natural treasures. You can see ancient statues, old coins, fossils, rare paintings and even an Egyptian mummy. Walk through its galleries and discover objects from different periods and parts of the world. It's a wonderful experience for anyone curious about history, art and culture.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610995/1280px-Indian_Museum_2C_Courtyard_2C_Kolkata_2C_India.jpg.jpg"
+  },
+  {
+    "place_id": 189,
+    "dest_id": 18,
+    "place_name": "Kalighat Kali Temple",
+    "route": "R2",
+    "descrip": "Step into a place where faith and devotion can be felt in every corner! Kalighat Kali Temple is an important spiritual landmark of Kolkata, believed to be the place where the right toe of Goddess Sati's right foot fell. Its name is linked to Maa Kali and the old ghat beside the Adi Ganga, which was once an important river route. Observe the traditional worship, hear the prayers and experience the strong connection between Bengal and its beloved Goddess Kali",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610977/kalighat-kali-temple-shaktipeeth-6.jpg"
+  },
+  {
+    "place_id": 190,
+    "dest_id": 18,
+    "place_name": "Jorasanko Thakur Bari",
+    "route": "R1",
+    "descrip": "Discover the home of one of India's greatest literary figures at Jorasanko Thakur Bari! This beautiful ancestral house belonged to the Tagore family and was the birthplace of Rabindranath Tagore. Walk through its historic rooms, see family portraits and explore objects connected with the family's artistic and cultural life. The house also reflects how the Tagores contributed to literature, music, education and art. It's a memorable visit for anyone who wants to understand Bengal's rich cultural heritage.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610932/jorasanko-thakur-bari.jpg"
+  },
+  {
+    "place_id": 191,
+    "dest_id": 19,
+    "place_name": "Shree Jagannath Temple",
+    "route": "R1",
+    "descrip": "Step into a place where centuries-old traditions are still followed with great devotion! Shri Jagannath Temple is dedicated to Lord Jagannath, his elder brother Balabhadra and sister Subhadra. Look up at its towering structure and the Neelachakra, a sacred wheel placed at the top. The temple is especially famous for its annual Rath Yatra, when the deities are taken out in enormous wooden chariots. Its rituals, traditions and spiritual importance make it a special part of Odisha's identity.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610282/Shree-Jagannath-Temple-Puri-Odisha-3.jpg"
+  },
+  {
+    "place_id": 192,
+    "dest_id": 19,
+    "place_name": "Raghurajpur Heritage Crafts Village",
+    "route": "R3",
+    "descrip": "What if an entire village felt like an art gallery? That's the charm of Raghurajpur! The village is famous for its Pattachitra paintings, where artists use fine lines and bright colours to tell stories of Lord Jagannath, Krishna and other mythological figures. Walk through the decorated houses, watch artisans at work and explore handmade paintings, masks and wooden crafts. You can even take home a piece of Odisha's artistic tradition, made by the very hands you watched creating it.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610716/250px-The_Paintings_on_Betel_nut__28Areca_nut_29_by_the_artists_of_Raghurajpur.JPG.jpg"
+  },
+  {
+    "place_id": 193,
+    "dest_id": 19,
+    "place_name": "Gundicha Temple",
+    "route": "R2",
+    "descrip": "Imagine thousands of devotees pulling huge decorated chariots as Lord Jagannath begins his journey to Gundicha Temple! This temple holds a special place in the famous Rath Yatra, as it is where Lord Jagannath, Balabhadra and Subhadra stay during their annual visit away from the main Jagannath Temple. The journey is deeply connected with local beliefs and traditions. Visiting Gundicha Temple gives you a closer look at one of Odisha's most loved festivals and its centuries-old customs.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610332/gundicha-temple.jpg"
+  },
+  {
+    "place_id": 194,
+    "dest_id": 19,
+    "place_name": "Loknath Temple",
+    "route": "R1",
+    "descrip": "Here's something unusual about Loknath Temple that makes it worth discovering! The temple is dedicated to Lord Shiva, but its Shivalinga usually remains submerged under water. Devotees believe that the water is removed only once a year, just before Mahashivratri, so they can have a special darshan. The temple is also closely connected with the religious traditions of Puri and is believed to be associated with Lord Jagannath. Its unique worship practice makes it different from many other Shiva temples.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610351/one-more-pic-taken.jpg"
+  },
+  {
+    "place_id": 195,
+    "dest_id": 19,
+    "place_name": "Konark Sun Temple",
+    "route": "R4",
+    "descrip": "Konark Sun Temple is a remarkable masterpiece dedicated to the Sun God, Surya. Its structure is designed as a huge chariot with 24 beautifully carved wheels and seven stone horses. Look closely at the wheels to notice their detailed carvings, which also work like sundials to tell time using the sun's shadow. Explore the sculptures and detailed stonework to discover how art, architecture and ancient knowledge come together in this amazing monument.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610377/konarak-sun-temple.jpg"
+  },
+  {
+    "place_id": 196,
+    "dest_id": 20,
+    "place_name": "Jaisalmer Fort",
+    "route": "R1",
+    "descrip": "What makes Jaisalmer Fort different from other forts? It's not just a historical monument; it's a living town! Built on Trikuta Hill, this golden sandstone fort is home to local families, colourful shops, ancient Jain temples and beautiful old houses. Explore its winding streets, admire the detailed stonework and enjoy views of the golden city from its walls. Every corner offers a glimpse into the royal past and everyday life of Jaisalmer.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610443/Jaisalmer-Fort-1.jpg"
+  },
+  {
+    "place_id": 197,
+    "dest_id": 20,
+    "place_name": "Patwon Ki Haveli",
+    "route": "R1",
+    "descrip": "Ever seen a building where even the smallest parts are covered with beautiful carvings? Patwon Ki Haveli is a group of five grand havelis built by a wealthy merchant family. Its balconies, windows, stone screens and detailed carvings show the amazing skill of Jaisalmer's traditional craftsmen. Step inside to explore beautifully decorated rooms, old paintings and mirror work. The fine details make it easy to imagine the rich lifestyle of merchants who once lived here.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793610420/m_activities-jaisalmer-patwon-ki-haveli_l_400_640.jpg"
+  },
+  {
+    "place_id": 198,
+    "dest_id": 20,
+    "place_name": "Salim Singh Ki Haveli",
+    "route": "R1",
+    "descrip": "One look at Salim Singh Ki Haveli and you'll notice something unusual! Its upper section is wider than the lower part, with beautifully curved balconies that give it the appearance of a peacock. Built using yellow sandstone, the haveli features detailed carvings, arched windows and unique architectural designs. Walk around and notice how each section has its own style. It's a perfect place to discover the creative building techniques and royal-era architecture of Jaisalmer.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605390/salim-singh-ki-haveli-1.jpg"
+  },
+  {
+    "place_id": 199,
+    "dest_id": 20,
+    "place_name": "Nathmal Ki Haveli",
+    "route": "R1",
+    "descrip": "Can you spot the differences between the two sides of a building? Nathmal Ki Haveli makes this a fun little challenge! Its two sides were designed and carved by two brothers working separately, giving the haveli a similar yet slightly different look on each side. Notice the detailed stone elephants, floral patterns and beautifully carved balconies. The combination of their individual styles makes this haveli special and offers a closer look at the artistic talent of old Jaisalmer.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605217/nathmal-ki-haveli-jaisalmer-rajasthan-2-attr-hero.jpg"
+  },
+  {
+    "place_id": 200,
+    "dest_id": 20,
+    "place_name": "Bada Bagh",
+    "route": "R2",
+    "descrip": "Step into a place where Jaisalmer's royal history is remembered through beautiful stone architecture! Bada Bagh is home to a collection of royal chhatris, built as memorials for the rulers and royal family members of Jaisalmer. Each structure features a carved dome supported by pillars, with designs that reflect the craftsmanship of its time. The quiet surroundings and golden sandstone make it a lovely place to explore the region's royal traditions and admire its historic architecture.",
+    "p_image": "https://res.cloudinary.com/guvtih1w/image/upload/v1793605049/66e55b3d460eb8001de02a5f.jpg"
+  }
+];
+  </script>
   <script>
     let currentDestination = destinations.find(d => Number(d.dest_id) === 1) || destinations[0];
 let showingAll = false;
