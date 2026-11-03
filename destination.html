@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BYG | Before You Go</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="{{ url_for('dashboard') }}" aria-label="BYG home"></a>
+      <span class="brand-mark">❀</span>
+      <span><strong>BYG</strong><small>Before You Go</small></span>
+    </a>
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="searchBtn" class="icon-btn" aria-label="Search">⌕</button>
+      <button class="profile" aria-label="Profile">●</button>
+    </div>
+  </header>
+
+  <main class="page-shell" id="top">
+    <section class="hero" id="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">DESTINATION</span>
+        <h1 id="destinationName">{{ destination_name }}</h1>
+        <p class="location" id="destinationState">⌖ Uttar Pradesh</p>
+        <div class="tags" id="destinationTags"></div>
+      </div>
+    </section>
+
+    <section class="intro-row" id="about">
+      <div class="about-copy">
+        <h2><span class="section-symbol">❀</span> About <span id="aboutName">{{ destination_name }}</span></h2>
+        <p id="destinationDescription"></p>
+      </div>
+    </section>
+
+    <section class="explore-section">
+      <h2><span class="section-symbol">♧</span> Explore Your Way</h2>
+      <p class="section-subtitle">Choose what you want to discover at this destination.</p>
+      <div class="feature-grid">
+        <button class="feature-card route-card" id="routeFeature">
+          <span class="feature-icon pin-icon">⌖</span>
+          <span class="feature-content"><strong>Decide Your Visiting Order</strong><small>Choose a starting attraction, explore places grouped by area, and arrange your visit in your preferred order.</small></span>
+          <span class="arrow">→</span>
+        </button>
+        <button class="feature-card" id="foodFeature">
+          <span class="feature-icon food-icon">♨</span>
+          <span class="feature-content"><strong>Local Food</strong><small>Famous dishes and local specialities.</small></span>
+          <span class="arrow">→</span>
+        </button>
+        <button class="feature-card" id="shoppingFeature">
+          <span class="feature-icon shop-icon">▣</span>
+          <span class="feature-content"><strong>Shopping</strong><small>Local markets and things to buy.</small></span>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="attractions-section" id="destinations">
+      <div class="section-heading-row">
+        <div>
+          <h2><span class="section-symbol">❀</span> Top Attractions</h2>
+          <p class="section-subtitle">Discover the most loved places in <span id="attractionCity">{{ destination_name }}</span>.</p>
+        </div>
+        <button id="viewAll" class="view-all">View All <span>→</span></button>
+      </div>
+      <div class="attraction-grid" id="attractionGrid"></div>
+    </section>
+
+    <section class="destination-browser" id="destinationBrowser">
+      <div class="section-heading-row">
+        <div><h2>Explore Destinations</h2><p class="section-subtitle">Choose another destination from your Excel table.</p></div>
+        <input id="destinationSearch" type="search" placeholder="Search destinations...">
+      </div>
+      <div class="destination-chips" id="destinationChips"></div>
+    </section>
+  </main>
+
+  <dialog id="placeDialog" class="place-dialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+    <img id="dialogImage" src="" alt="">
+    <div class="dialog-body"><span class="dialog-route" id="dialogRoute"></span><h2 id="dialogTitle"></h2><p id="dialogDescription"></p></div>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
