@@ -5,24 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BYG | Before You Go</title>
-  <link rel="stylesheet" href="/style1.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header class="navbar">
+  
+<header class="navbar">
     <a class="brand" href="{{ url_for('dashboard') }}" aria-label="BYG home">
-      <span class="brand-mark">❀</span>
-      <span><strong>BYG</strong><small>Before You Go</small></span>
+        <span class="brand-mark">❀</span>
+        <span>
+            <strong>BYG</strong>
+            <small>Before You Go</small>
+        </span>
     </a>
+
     <nav>
-      <a href="#top">Home</a>
-      <a href="#destinations">Destinations</a>
-      <a href="#about">About</a>
+        <a href="#top">Home</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#about">About</a>
     </nav>
+
     <div class="nav-actions">
-      <button id="searchBtn" class="icon-btn" aria-label="Search">⌕</button>
-      <button class="profile" aria-label="Profile">●</button>
+        <button id="searchBtn" class="icon-btn" aria-label="Search">⌕</button>
+        <button class="profile" aria-label="Profile">●</button>
     </div>
-  </header>
+</header>
+
 
   <main class="page-shell" id="top">
     <section class="hero" id="hero">
@@ -89,7 +96,7 @@
     <div class="dialog-body"><span class="dialog-route" id="dialogRoute"></span><h2 id="dialogTitle"></h2><p id="dialogDescription"></p></div>
   </dialog>
   <div class="toast" id="toast" role="status"></div>
-  <script src="/data.js"></script>
-  <script src="/script1.js"></script>
+  <script src="{{ url_for('static', filename='data.js') }}"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script> 
 </body>
 </html>
