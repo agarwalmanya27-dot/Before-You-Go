@@ -33,7 +33,7 @@ def login_user():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("comp.html")
+    return render_template("dashboard.html")
 
 @app.route('/destination/<destination_name>')
 def destination(destination_name):
