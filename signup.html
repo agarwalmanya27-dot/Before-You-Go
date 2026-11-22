@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | Before You Go</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #061a31;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 15px;
+        }
+
+        .box {
+            width: 520px;
+            padding: 25px 35px;
+            background: #0b2948;
+            border: 2px solid #4da3ff;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            color: #1976d2;
+            font-size: 32px;
+            margin: 5px 0;
+        }
+
+        h1 span {
+            color: orange;
+        }
+
+        h2 {
+            margin: 12px 0 5px;
+            color: white;
+        }
+
+        .subtitle {
+            color: #c5d5e5;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .field {
+            text-align: left;
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #dceaff;
+        }
+
+        input {
+            width: 100%;
+            height: 42px;
+            padding: 10px 12px;
+            background: #193a5d;
+            color: white;
+            border: 1px solid #7191b5;
+            border-radius: 9px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border: 1px solid #18d9d1;
+        }
+
+        input::placeholder {
+            color: #b8c8d9;
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .password-box input {
+            padding-right: 48px;
+        }
+
+        .eye {
+            position: absolute;
+            right: 8px;
+            top: 5px;
+            width: 35px;
+            height: 32px;
+            background: transparent;
+            border: none;
+            color: #b8c8d9;
+            cursor: pointer;
+            font-size: 19px;
+            margin: 0;
+         }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            flex: 1;
+            height: 45px;
+            border: none;
+            border-radius: 9px;
+            font-size: 15px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .save {
+            background: linear-gradient(90deg, #1474e8, #18d9d1);
+        }
+
+        .cancel {
+            background: #b94a48;
+        }
+
+        .login {
+            background: #23618e;
+        }
+
+        .buttons button:hover {
+            opacity: 0.85;
+        }
+
+        .bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #c5d5e5;
+        }
+
+        .bottom a {
+            color: #35d6d0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media(max-width: 480px) {
+            .box {
+                padding: 22px 18px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>Before You <span>Go</span></h1>
+
+    <h2>Create Your Account</h2>
+
+    <p class="subtitle">
+        Register and start your travel journey!
+    </p>
+
+    <form action="{{ url_for('signup') }}"
+          method="POST"
+          id="signupForm">
+
+        <!-- Combined name for Flask -->
+        <input type="hidden" name="name" id="fullName">
+
+        <div class="row">
+
+            <div class="field">
+                <label>First Name</label>
+                <input type="text"
+                       id="firstName"
+                       placeholder="First Name"
+                       required>
+            </div>
+
+            <div class="field">
+                <label>Middle Name</label>
+                <input type="text"
+                       id="middleName"
+                       placeholder="Middle Name">
+            </div>
+
+            <div class="field">
+                <label>Last Name</label>
+                <input type="text"
+                       id="lastName"
+                       placeholder="Last Name"
+                       required>
+            </div>
+
+        </div>
+
+        <div class="field">
+            <label>Email Address</label>
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email"
+                   required>
+        </div>
+
+        <div class="field">
+            <label>Mobile Number</label>
+            <input type="tel"
+                   name="phone"
+                   placeholder="Enter 10 digit mobile number"
+                   pattern="[0-9]{10}"
+                   maxlength="10"
+                   required>
+        </div>
+
+        <div class="field">
+            <label>Password</label>
+
+            <div class="password-box">
+                <input type="password"
+                       name="password"
+                       id="password"
+                       placeholder="Create password"
+                       minlength="6"
+                       required>
+
+                <button type="button" class="eye"
+        onclick="togglePassword('password', this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+        <circle cx="12" cy="12" r="3"/>
+    </svg>
+</button>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Confirm Password</label>
+
+            <div class="password-box">
+                <input type="password"
+                       name="confirm_password"
+                       id="confirm_password"
+                       placeholder="Confirm password"
+                       minlength="6"
+                       required>
+
+                <button type="button" class="eye"
+        onclick="togglePassword('password', this)">
+    <svg width="20" height="20" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+        <circle cx="12" cy="12" r="3"/>
+    </svg>
+</button>
+            </div>
+        </div>
+
+        <div class="buttons">
+
+            <button type="submit" class="save">
+                💾 Save
+            </button>
+
+            <button type="reset" class="cancel">
+                ✖ Cancel
+            </button>
+
+            <button type="button"
+                    class="login"
+                    onclick="window.location.href='{{ url_for('home') }}'">
+                ↩ Login
+            </button>
+
+        </div>
+
+    </form>
+
+    <p class="bottom">
+        Already registered?
+        <a href="{{ url_for('home') }}">Login Here</a>
+    </p>
+
+</div>
+
+<script>
+
+    // Show / Hide Password
+    function togglePassword(id, button) {
+
+    let field = document.getElementById(id);
+
+    if (field.type === "password") {
+        field.type = "text";
+
+        button.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round">
+            <path d="M3 3l18 18"/>
+            <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"/>
+            <path d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a13 13 0 0 1-3 3.8"/>
+            <path d="M6.2 6.2C3.5 8 2 12 2 12s3.5 7 10 7a10 10 0 0 0 4-.8"/>
+        </svg>`;
+    }
+    else {
+        field.type = "password";
+
+        button.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3"/>
+        </svg>`;
+    }
+}
+
+    // Combine first, middle and last name
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+
+        let first = document.getElementById("firstName").value.trim();
+        let middle = document.getElementById("middleName").value.trim();
+        let last = document.getElementById("lastName").value.trim();
+
+        let fullName = [first, middle, last].filter(Boolean).join(" ");
+
+        document.getElementById("fullName").value = fullName;
+
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirm_password").value;
+
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert("Password and Confirm Password do not match!");
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
+
